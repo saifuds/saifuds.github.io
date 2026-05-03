@@ -1,12 +1,13 @@
----
-layout: default
-title: Home
----
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Suemayya Saifuddin</title>
+</head>
+<body>
+  <h1>Suemayya Saifuddin</h1>
+  <p>Electrical Engineering student focused on embedded systems, electronics, and technical design.</p>
 
-# Suemayya Saifuddin
-
-Electrical Engineering student focused on embedded systems, electronics, and technical design.
-
-## Projects
-
-Coming soon.
+  <h2>Projects</h2>
+  <p>Coming soon.</p>
+</body>
+</html>
