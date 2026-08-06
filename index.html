@@ -1,13 +1,564 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 <head>
-  <title>Suemayya Saifuddin</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Suemayya Saifuddin — fourth-year Electrical Engineering student at McMaster University. Hardware, software, circuits, systems design, and testing." name="description"/>
+<title>Suemayya Saifuddin | Electrical Engineering</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<style>
+    /* Editorial portfolio additions */
+    :root {
+      --portfolio-accent: #35c6ff;
+      --portfolio-ink: #08111f;
+      --portfolio-card: #172238;
+      --portfolio-line: rgba(119, 174, 222, 0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    .hero-kicker {
+      font-family: "JetBrains Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--portfolio-accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title { line-height: .88; letter-spacing: -.045em; }
+
+    .hero-tagline {
+      max-width: 720px;
+      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid var(--portfolio-line);
+      border-bottom: 1px solid var(--portfolio-line);
+      background: #07101c;
+      padding: 14px 0;
+    }
+
+    .marquee-track {
+      width: max-content;
+      display: flex;
+      gap: 2rem;
+      animation: portfolio-marquee 28s linear infinite;
+      font-family: "JetBrains Mono", monospace;
+      font-size: .78rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #9fc9ed;
+    }
+
+    .marquee-track span::after {
+      content: "•";
+      margin-left: 2rem;
+      color: var(--portfolio-accent);
+    }
+
+    @keyframes portfolio-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .projects-intro {
+      max-width: 760px;
+      margin: -1rem 0 3rem;
+      color: #91a9c4;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .featured-label,
+    .archive-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0 1.5rem;
+      font-family: "JetBrains Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .76rem;
+      color: var(--portfolio-accent);
+    }
+
+    .featured-label::after,
+    .archive-label::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--portfolio-line);
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(53,198,255,.6);
+      box-shadow: 0 18px 50px rgba(0,0,0,.18);
+    }
+
+    .project-number {
+      position: absolute;
+      right: 1.5rem;
+      bottom: .7rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: clamp(4rem, 8vw, 7rem);
+      line-height: 1;
+      color: rgba(117, 178, 230, .045);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin: 28px 0 30px;
+    }
+
+    .project-gallery.single { grid-template-columns: minmax(0, 1fr); max-width: 860px; }
+
+    .project-gallery figure { margin: 0; min-width: 0; }
+
+    .media-frame {
+      width: 100%;
+      height: 330px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #0a1220;
+      border: 1px solid rgba(119,174,222,.16);
+    }
+
+    .media-frame img,
+    .media-frame video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .45s ease;
+    }
+
+    .project-card:hover .media-frame img { transform: scale(1.025); }
+
+    /* Use on diagrams/screenshots where cropping would remove information. */
+    .media-frame .contain {
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .project-gallery figcaption {
+      margin-top: 10px;
+      color: #8ea5bf;
+      font-size: .9rem;
+      line-height: 1.45;
+    }
+
+    .project-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      margin-top: 1.25rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--portfolio-accent);
+      text-decoration: none;
+    }
+
+    .project-cta span { transition: transform .2s ease; }
+    .project-cta:hover span { transform: translateX(5px); }
+
+    .experience-card { position: relative; }
+    .experience-index {
+      font-family: "JetBrains Mono", monospace;
+      color: var(--portfolio-accent);
+      letter-spacing: .1em;
+      font-size: .8rem;
+      margin-bottom: .9rem;
+    }
+
+    .contact-content {
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+    }
+
+    .contact-content::before {
+      content: "SAY HELLO";
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: .8;
+      font-weight: 700;
+      letter-spacing: -.06em;
+      color: rgba(113, 181, 236, .075);
+      margin-bottom: 2rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+      .project-card, .media-frame img { transition: none; }
+    }
+
+    @media (max-width: 800px) {
+      .project-gallery { grid-template-columns: 1fr; }
+      .media-frame { height: 300px; }
+    }
+
+    @media (max-width: 500px) {
+      .media-frame { height: 240px; border-radius: 11px; }
+      .marquee-track { font-size: .7rem; }
+    }
+  
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .capability-card {
+      padding: 1.5rem;
+      border: 1px solid var(--portfolio-line);
+      border-radius: 14px;
+      background: rgba(18, 31, 51, 0.72);
+    }
+
+    .capability-card h3 {
+      margin-bottom: .7rem;
+    }
+
+    .capability-card p {
+      margin: 0;
+      color: #91a9c4;
+      line-height: 1.7;
+    }
+
+    .video-frame {
+      height: auto;
+      aspect-ratio: 16 / 9;
+      background: #050a12;
+    }
+
+    .video-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #050a12;
+    }
+
+    @media (max-width: 800px) {
+      .capabilities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+</style>
 </head>
 <body>
-  <h1>Suemayya Saifuddin</h1>
-  <p>Electrical Engineering student focused on embedded systems, electronics, and technical design.</p>
+<nav class="nav" id="nav">
+<div class="nav-inner">
+<a class="nav-logo" href="#">SS</a>
+<button aria-label="Toggle navigation" class="nav-toggle" id="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+<ul class="nav-links" id="nav-links"><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Capabilities</a></li><li><a href="#experience">Experience</a></li><li><a href="#contact">Contact</a></li></ul>
+</div>
+</nav>
+<header class="hero" id="hero">
+<div class="hero-grid"></div>
+<div class="container hero-content">
+<p class="hero-label hero-kicker">Electrical Engineering · Hardware · Software · Systems</p>
+<h1 class="hero-title">Suemayya<br/>Saifuddin</h1>
+<p class="hero-location">McMaster University · Year 4 · Greater Toronto Area, ON</p>
+<p class="hero-tagline">Building practical engineering systems across hardware, software, circuits, testing, and technical design.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#projects">View Projects</a>
+<a class="btn btn-secondary" href="#contact">Get in Touch</a>
+</div>
+</div>
+<div class="hero-scroll">
+<span>Scroll</span>
+<div class="scroll-line"></div>
+</div>
+</header>
+<div aria-label="Technical focus areas" class="marquee">
+<div class="marquee-track"><span>Electrical Engineering</span><span>Systems Design</span><span>Hardware Development</span><span>Software Development</span><span>Circuit Design</span><span>Testing &amp; Validation</span><span>Technical Analysis</span><span>Toronto</span><span aria-hidden="true">Electrical Engineering</span><span aria-hidden="true">Systems Design</span><span aria-hidden="true">Hardware Development</span><span aria-hidden="true">Software Development</span><span aria-hidden="true">Circuit Design</span><span aria-hidden="true">Testing &amp; Validation</span><span aria-hidden="true">Technical Analysis</span><span aria-hidden="true">Toronto</span></div>
+</div>
+<main>
+<section class="section" id="about">
+<div class="container">
+<div class="section-header">
+<span class="section-label">01</span>
+<h2>About</h2>
+</div>
+<div class="about-grid">
+<p class="about-lead">
+            I'm a fourth-year Electrical Engineering student at McMaster University (expected graduation April 2028),
+            focused on embedded systems, electronics, and technical design. I work across firmware development,
+            sensor integration, circuit design, and engineering analysis - from ESP32 dashboards and LiDAR mapping
+            to CMOS logic gates and amplifier circuits.
+          </p>
+<div class="education-card">
+<div class="education-header">
+<div>
+<h3>McMaster University</h3>
+<p class="education-location">Hamilton, ON, Canada</p>
+</div>
+<span class="education-date">Apr 2028</span>
+</div>
+<p class="education-degree">Bachelor of Engineering, Electrical Engineering — Year 4</p>
+<p class="education-courses">
+              Relevant coursework: Intro to Circuit Analysis, Principles of Programming (C/C++), Circuits &amp; Systems,
+              Data Structures &amp; Algorithms, Logic Design, Microprocessor Systems Project, Electronic Devices &amp; Circuits,
+              Signals &amp; Systems, Advanced Probability &amp; Random Processes, Communication Systems
+            </p>
+<div class="club-tags">
+<span>IEEE McMaster</span>
+<span>SumoBot McMaster</span>
+<span>PinkInTech</span>
+<span>McMaster MSA</span>
+</div>
+</div>
+<div class="about-highlights">
+<div class="highlight">
+<span class="highlight-icon">⚙</span>
+<div>
+<h3>Embedded Firmware</h3>
+<p>ESP32, MSP432, Arduino — deep sleep, SPI/I2C/UART, OAuth, FSM-driven control</p>
+</div>
+</div>
+<div class="highlight">
+<span class="highlight-icon">⚡</span>
+<div>
+<h3>Circuit Design</h3>
+<p>CMOS logic, amplifier design, LTspice simulation, oscilloscope verification</p>
+</div>
+</div>
+<div class="highlight">
+<span class="highlight-icon">💻</span>
+<div>
+<h3>Software &amp; Analysis</h3>
+<p>Python, C++, OOP, Open3D, MATLAB, economic modeling, Dr. Memory</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-  <h2>Projects</h2>
-  <p>Coming soon!</p>
+<section class="section" id="projects">
+<div class="container">
+<div class="section-header">
+<span class="section-label">02</span>
+<h2>Projects</h2>
+</div>
+<p class="projects-intro">A curated selection of engineering work across hardware, software, circuits, robotics, and system integration.</p>
+<div class="featured-label">Featured work</div>
+<div class="projects-list"><div class="featured-label">Featured work</div><article class="project-card">
+<span aria-hidden="true" class="project-number">01</span>
+<div class="project-meta">
+<span class="project-tag">ESP32 · E-Ink · C++</span>
+<span class="project-date">Jan – Mar 2026</span>
+</div>
+<h3 class="project-title">Embedded E-Ink Dashboard</h3>
+<div aria-label="Embedded E-Ink Dashboard project images" class="project-gallery">
+<figure>
+<div class="media-frame"><img alt="ESP32 E-Ink dashboard displaying weather, calendar events, and prayer times" loading="lazy" src="assets/images/eink-dashboard-real-time-display.jpg"/></div>
+<figcaption>Working E-Ink dashboard showing live weather, calendar, and prayer-time data.</figcaption>
+</figure>
+</div>
+<ul class="project-details">
+<li>Developed an independent ESP32 system to call and render Google Calendar, weather, and prayer time APIs</li>
+<li>Integrated 3.97" E-Ink display allowing for persistent, static data visualization between infrequent updates</li>
+<li>Optimized system power efficiency via a 24-hour deep-sleep refresh cycle to minimize energy consumption</li>
+</ul>
+<div class="project-tech">
+<span>ESP32</span><span>E-Paper</span><span>SPI</span><span>OAuth 2.0</span><span>ArduinoJson</span><span>REST APIs</span>
+</div>
+</article><article class="project-card">
+<span aria-hidden="true" class="project-number">02</span>
+<div class="project-meta">
+<span class="project-tag">C · Python</span>
+<span class="project-date">Jan – Apr 2025</span>
+</div>
+<h3 class="project-title">3D Mapping System</h3>
+<div aria-label="3D Mapping System project images" class="project-gallery">
+<figure>
+<div class="media-frame"><img alt="Physical hallway beside its reconstructed 3D time-of-flight point cloud" class="contain" loading="lazy" src="assets/images/lidar-3d-mapping-physical-environment-vs-tof-reconstruction.png"/></div>
+<figcaption>Physical hallway compared with the generated 3D ToF reconstruction.</figcaption>
+</figure>
+<figure>
+<div class="media-frame"><img alt="System architecture diagram for the MSP432 3D mapping system" class="contain" loading="lazy" src="assets/images/lidar-3d-mapping-system-architecture-diagram.png"/></div>
+<figcaption>System architecture connecting the MSP432, ToF sensor, stepper motor, controls, and PC.</figcaption>
+</figure>
+</div>
+<ul class="project-details">
+<li>Created a 3D spatial mapping system using ToF sensor, UART, stepper motor, and Python 3D visualization</li>
+<li>Generated 3D point clouds with approximately 900 spatial data points</li>
+</ul>
+<div class="project-tech">
+<span>C</span><span>Python</span><span>ToF Sensor</span><span>UART</span><span>Stepper Motor</span>
+</div>
+</article><article class="project-card">
+<span aria-hidden="true" class="project-number">03</span>
+<div class="project-meta">
+<span class="project-tag">Arduino · Robotics</span>
+<span class="project-date">Jan 2025</span>
+</div>
+<h3 class="project-title">McMaster SumoBot Competition</h3>
+<div aria-label="McMaster SumoBot Competition project images" class="project-gallery">
+<figure>
+<div class="media-frame"><img alt="Shredded Bot autonomous SumoBot during testing" loading="lazy" src="assets/images/sumobot-shredded-bot-testing.png"/></div>
+<figcaption>Shredded Bot during hardware and sensor testing.</figcaption>
+</figure>
+<figure>
+<div class="media-frame"><img alt="Shredded Bot autonomous SumoBot on competition day" loading="lazy" src="assets/images/sumobot-shredded-bot-competition-day.jpg"/></div>
+<figcaption>Final competition-day configuration.</figcaption>
+</figure>
+</div>
+<ul class="project-details">
+<li>Designed and built a mini SumoBot using 3D-printed parts, Arduino Nano control, and ultrasonic/infrared sensors</li>
+<li>Fine-tuned control logic to improve robot movement, sensor response, and ring detection during matches</li>
+</ul>
+<div class="project-tech">
+<span>Arduino Nano</span><span>Ultrasonic</span><span>IR Sensors</span><span>FSM</span><span>3D Printing</span>
+</div>
+</article><div class="archive-label">Additional technical work</div><article class="project-card">
+<span aria-hidden="true" class="project-number">04</span>
+<div class="project-meta">
+<span class="project-tag">CMOS · LTspice</span>
+<span class="project-date">Mar – Apr 2026</span>
+</div>
+<h3 class="project-title">CMOS XOR Logic Gate Design Project</h3>
+<ul class="project-details">
+<li>Designed and built a CMOS XOR logic gate using PMOS and NMOS networks</li>
+<li>Derived pull-up/pull-down logic from Boolean expressions and verified XOR behavior through LTspice</li>
+</ul>
+<div class="project-tech">
+<span>CMOS</span><span>PMOS/NMOS</span><span>LTspice</span><span>Logic Design</span>
+</div>
+</article><article class="project-card">
+<span aria-hidden="true" class="project-number">05</span>
+<div class="project-meta">
+<span class="project-tag">Analog · LTspice</span>
+<span class="project-date">Feb – Mar 2026</span>
+</div>
+<h3 class="project-title">Amplifier Design Project</h3>
+<ul class="project-details">
+<li>Designed, simulated, and built a single-transistor 2N3904 emitter-follower amplifier for a 100 Ω load</li>
+<li>Verified gain, linearity, and less than 10% attenuation using LTspice and oscilloscope measurements</li>
+</ul>
+<div class="project-tech">
+<span>2N3904</span><span>LTspice</span><span>Oscilloscope</span><span>Analog Design</span>
+</div>
+</article><article class="project-card">
+<span aria-hidden="true" class="project-number">06</span>
+<div class="project-meta">
+<span class="project-tag">C++ · OOP</span>
+<span class="project-date">May – Jul 2024</span>
+</div>
+<h3 class="project-title">Snake Game</h3>
+<div aria-label="Snake Game demonstration video" class="project-gallery single project-video-gallery"><figure><div class="media-frame video-frame"><video aria-label="Video demonstration of the C++ Snake Game in action" controls="" playsinline="" poster="assets/images/snake-game-startup.png" preload="metadata"><source src="assets/Snake Game Demo.mp4" type="video/mp4"/>Your browser does not support embedded MP4 video.</video></div><figcaption>Gameplay demonstration showing movement, food collection, score updates, and dynamic snake growth.</figcaption></figure></div>
+<ul class="project-details">
+<li>Iteratively developed a Snake game using Object-Oriented Programming and Finite State Machine logic</li>
+<li>Utilized Dr. Memory to monitor heap usage and ensure proper allocation/deallocation of game objects</li>
+</ul>
+<div class="project-tech">
+<span>C++</span><span>OOP</span><span>FSM</span><span>Dr. Memory</span>
+</div>
+</article></div>
+</div>
+</section>
+<section class="section section-dark" id="skills">
+<div class="container">
+<div class="section-header">
+<span class="section-label">03</span>
+<h2>Skills</h2>
+</div>
+<div class="skills-grid capabilities-grid"><div class="skill-group capability-card"><h3>Hardware &amp; Embedded Systems</h3><p>Microcontrollers, sensor integration, serial communication, hardware-software interfacing, and electronics testing.</p></div><div class="skill-group capability-card"><h3>Software &amp; Analysis</h3><p>C/C++, Python, MATLAB, object-oriented programming, data processing, visualization, and API integration.</p></div><div class="skill-group capability-card"><h3>Circuit &amp; Digital Design</h3><p>Analog circuit design, CMOS logic, simulation, measurement, Verilog, and FPGA fundamentals.</p></div><div class="skill-group capability-card"><h3>Engineering Practice</h3><p>System integration, debugging, validation, technical documentation, design trade-offs, and iterative prototyping.</p></div></div>
+</div>
+</section>
+<section class="section section-dark" id="experience">
+<div class="container">
+<div class="section-header">
+<span class="section-label">04</span>
+<h2>Experience</h2>
+</div>
+<div class="experience-list">
+<article class="experience-card">
+<div class="experience-index">01 / EXPERIENCE</div>
+<div class="experience-header">
+<div>
+<h3>Student Services Secretary</h3>
+<p class="experience-org">McMaster Muslim Student Association</p>
+<p class="experience-location">Hamilton, Ontario</p>
+</div>
+<span class="experience-date">Aug 2025 – Present</span>
+</div>
+<ul class="experience-details">
+<li>Manages bi-weekly meeting minutes, event records, approval tracking, timelines, and digital file management</li>
+<li>Coordinates with the Marketing Team to deliver accurate and timely event details for seamless event planning</li>
+</ul>
+</article>
+<article class="experience-card">
+<div class="experience-index">02 / EXPERIENCE</div>
+<div class="experience-header">
+<div>
+<h3>Co-Founder and Director</h3>
+<p class="experience-org">Regent Park Mental Health Matters</p>
+<p class="experience-location">Toronto, Ontario</p>
+</div>
+<span class="experience-date">Jun 2022 – Sep 2024</span>
+</div>
+<ul class="experience-details">
+<li>Founded a youth organization to create a safe space to speak on mental health issues</li>
+<li>Organized files, arranged meeting minutes, and conducted new-participant intake applications</li>
+<li>Developed PowerPoint presentations and compiled community resources to support and enhance workshops</li>
+</ul>
+</article>
+</div>
+</div>
+</section><section class="section" id="contact">
+<div class="container">
+<div class="section-header">
+<span class="section-label">05</span>
+<h2>Contact</h2>
+</div>
+<div class="contact-content">
+<p class="contact-lead">
+            Interested in collaborating, discussing embedded systems, or learning more about my work? Reach out.
+          </p>
+<p class="contact-location">Greater Toronto Area, ON, Canada</p>
+<div class="contact-links">
+<a class="contact-link" href="https://github.com/saifuds" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="20" viewbox="0 0 24 24" width="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+              GitHub
+            </a>
+<a class="contact-link" href="https://linkedin.com/in/suemayya" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="20" viewbox="0 0 24 24" width="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.127 0 2.061 2.061 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+              LinkedIn
+            </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container">
+<p>© 2026 Suemayya Saifuddin</p>
+</div>
+</footer>
+<script src="js/main.js"></script>
 </body>
 </html>
