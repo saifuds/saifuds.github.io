@@ -37,4 +37,27 @@
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
   });
+
+const navLogo = document.getElementById("nav-logo");
+
+function updateNavLogo() {
+  if (!navLogo) return;
+
+  navLogo.classList.toggle("is-scrolled", window.scrollY > 80);
+}
+
+window.addEventListener("scroll", updateNavLogo, { passive: true });
+updateNavLogo();
+
+
+const sumobotVideo = document.getElementById("sumobot-video");
+
+sumobotVideo.addEventListener("ended", () => {
+    // Go back to the beginning...
+    sumobotVideo.load();
+
+    // ...but show this image instead of the first frame.
+    sumobotVideo.poster =
+        "assets/images/sumobot-shredded-bot-testing.jpg";
+});
 })();
