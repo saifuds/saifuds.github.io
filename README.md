@@ -1,2 +1,2 @@
 # saifuds.github.io
-# suemayya.me is LIVE!
+suemayya.me is LIVE!
