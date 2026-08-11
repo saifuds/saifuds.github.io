@@ -11,16 +11,45 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <style>
     :root {
+      /* Dark mode remains the default, preserving the sleek navy base. */
       --bg: #07101c;
       --bg-soft: #0c1726;
       --panel: #111e31;
       --panel-2: #16243a;
-      --text: #eef6ff;
-      --muted: #9db0c8;
-      --line: rgba(133, 181, 224, 0.18);
-      --accent: #39c7ff;
-      --accent-soft: rgba(57, 199, 255, 0.09);
+      --text: #f7f3fb;
+      --muted: #a9aec0;
+      --line: rgba(185, 167, 234, 0.20);
+      --accent: #b9a7ea;
+      --accent-2: #f094ca;
+      --accent-3: #f1cd63;
+      --accent-soft: rgba(185, 167, 234, 0.10);
+      --grid-line: rgba(150, 218, 245, 0.11);
+      --nav-bg: rgba(7, 16, 28, 0.84);
+      --media-bg: #060c14;
+      --footer-bg: #050c15;
+      --copy-strong: #d8d7e2;
+      --tag-text: #c9c0dd;
       --max-width: 1180px;
+    }
+
+    body.light {
+      --bg: #fbf8fc;
+      --bg-soft: #f5eff7;
+      --panel: #ffffff;
+      --panel-2: #f8f4fa;
+      --text: #211d27;
+      --muted: #716a79;
+      --line: rgba(116, 98, 172, 0.19);
+      --accent: #8069bd;
+      --accent-2: #d963a7;
+      --accent-3: #b98b0c;
+      --accent-soft: rgba(128, 105, 189, 0.09);
+      --nav-bg: rgba(251, 248, 252, 0.88);
+      --media-bg: #f3eef5;
+      --footer-bg: #f6f0f7;
+      --copy-strong: #4d4653;
+      --tag-text: #665e72;
+      --grid-line: rgba(180, 168, 220, 0.09);
     }
 
     * {
@@ -37,6 +66,7 @@
       color: var(--text);
       font-family: "DM Sans", sans-serif;
       line-height: 1.6;
+      transition: background 0.22s ease, color 0.22s ease;
     }
 
     img,
@@ -95,7 +125,7 @@
     }
 
     .nav.is-scrolled {
-      background: rgba(7, 16, 28, 0.82);
+      background: var(--nav-bg);
       border-color: var(--line);
       backdrop-filter: blur(16px);
     }
@@ -227,8 +257,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(rgba(57, 199, 255, 0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(57, 199, 255, 0.055) 1px, transparent 1px);
+        linear-gradient(var(--grid-line) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, var(--grid-line) 1.5px, transparent 1.5px);
       background-size: 44px 44px;
       mask-image: linear-gradient(to bottom, black, transparent 82%);
       pointer-events: none;
@@ -265,7 +295,7 @@
     .hero-copy {
       max-width: 680px;
       margin: 24px 0 0;
-      color: #c0cede;
+      color: var(--copy-strong);
       font-size: clamp(1.05rem, 1.7vw, 1.35rem);
     }
 
@@ -292,8 +322,13 @@
 
     .btn-primary {
       background: var(--accent);
-      color: #04101b;
+      color: #17121f;
       border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-2);
+      border-color: var(--accent-2);
     }
 
     .btn-secondary {
@@ -353,7 +388,7 @@
 
     .project-question {
       margin: 24px 0 0;
-      color: #c7d5e5;
+      color: var(--copy-strong);
       font-size: 1.15rem;
       line-height: 1.7;
     }
@@ -374,7 +409,7 @@
       padding: 7px 10px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      color: #b9cae0;
+      color: var(--tag-text);
       font-family: "JetBrains Mono", monospace;
       font-size: 0.72rem;
     }
@@ -387,7 +422,7 @@
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 18px;
-      background: #060c14;
+      background: var(--media-bg);
       aspect-ratio: 4 / 3;
     }
 
@@ -405,7 +440,7 @@
     }
 
     .media-frame video {
-      background: #050a11;
+      background: var(--media-bg);
     }
 
     .project-media figcaption {
@@ -463,7 +498,7 @@
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--line);
-      background: #050a11;
+      background: var(--media-bg);
       aspect-ratio: 16 / 9;
     }
 
@@ -472,7 +507,7 @@
       height: 100%;
       display: block;
       object-fit: contain;
-      background: #050a11;
+      background: var(--media-bg);
     }
 
     /* About */
@@ -486,7 +521,7 @@
 
     .about-copy {
       max-width: 720px;
-      color: #c4d1e0;
+      color: var(--copy-strong);
       font-size: 1.18rem;
       line-height: 1.8;
     }
@@ -587,7 +622,7 @@
     .footer {
       padding: 80px 0 36px;
       border-top: 1px solid var(--line);
-      background: #050c15;
+      background: var(--footer-bg);
     }
 
     .footer-inner {
@@ -616,7 +651,7 @@
       gap: 11px;
       border: 1px solid var(--line);
       border-radius: 11px;
-      color: #bdd0e6;
+      color: var(--tag-text);
       text-decoration: none;
       font-size: 1.05rem;
       font-weight: 600;
@@ -689,7 +724,7 @@
         gap: 14px;
         border: 1px solid var(--line);
         border-radius: 14px;
-        background: rgba(7, 16, 28, 0.97);
+        background: var(--nav-bg);
       }
 
       .nav-links.is-open {
@@ -820,7 +855,7 @@
           width: 100%;
           height: auto;
           aspect-ratio: auto;
-          background: #050a11;
+          background: var(--media-bg);
         }
 
         .media-frame.snake-video-frame video {
@@ -828,7 +863,7 @@
           height: auto;
           display: block;
           object-fit: contain;
-          background: #050a11;
+          background: var(--media-bg);
         }
         
 
@@ -910,8 +945,8 @@
       padding: 9px 13px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(7, 16, 28, 0.94);
-      color: #bdd0e6;
+      background: var(--nav-bg);
+      color: var(--tag-text);
       font-family: "JetBrains Mono", monospace;
       font-size: 0.72rem;
       letter-spacing: 0.04em;
@@ -969,7 +1004,7 @@
 
     .project-info-panel li {
       margin: 0 0 10px;
-      color: #bdcadb;
+      color: var(--copy-strong);
       line-height: 1.55;
     }
 
@@ -1053,7 +1088,350 @@
         display: block !important;
       }
     }
-    </style>
+
+
+    /* ---------- playful accent layer ---------- */
+    ::selection {
+      background: var(--accent-2);
+      color: #17121f;
+    }
+
+    .eyebrow::before {
+      content: "✦";
+      margin-right: 9px;
+      color: var(--accent-2);
+      font-size: 0.82em;
+    }
+
+    .nav-logo-short::after {
+      content: "✦";
+      position: absolute;
+      top: -3px;
+      right: -13px;
+      color: var(--accent-3);
+      font-size: 0.68rem;
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font: inherit;
+      font-size: 1.02rem;
+      line-height: 1;
+      transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px) rotate(8deg);
+      color: var(--accent-3);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .hero-decor {
+      position: absolute;
+      z-index: 0;
+      width: min(24vw, 300px);
+      aspect-ratio: 1;
+      right: max(6vw, calc((100vw - var(--max-width)) / 2 + 8px));
+      top: 23%;
+      opacity: 0.72;
+      pointer-events: none;
+      filter: saturate(0.92);
+    }
+
+    .hero-flower {
+      position: absolute;
+      inset: 19%;
+      transform: rotate(9deg);
+    }
+
+    .hero-petal {
+      position: absolute;
+      width: 48%;
+      height: 48%;
+      border-radius: 62% 62% 48% 62%;
+      background: var(--accent-2);
+      box-shadow: 9px 9px 0 var(--accent-3), 18px 18px 0 var(--accent);
+    }
+
+    .hero-petal:nth-child(1) { left: 26%; top: 0; transform: rotate(45deg); }
+    .hero-petal:nth-child(2) { right: 0; top: 26%; transform: rotate(135deg); }
+    .hero-petal:nth-child(3) { left: 26%; bottom: 0; transform: rotate(225deg); }
+    .hero-petal:nth-child(4) { left: 0; top: 26%; transform: rotate(315deg); }
+
+    .hero-flower::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      left: 50%;
+      top: 50%;
+      border-radius: 50%;
+      background: var(--text);
+      transform: translate(-50%, -50%);
+      z-index: 4;
+    }
+
+    .hero-sparkle {
+      position: absolute;
+      color: var(--accent);
+      font-size: clamp(1.2rem, 2.4vw, 2.2rem);
+      line-height: 1;
+    }
+
+    .hero-sparkle.one { top: 9%; right: 13%; }
+    .hero-sparkle.two { bottom: 9%; left: 3%; color: var(--accent-2); font-size: 1.25rem; }
+    .hero-sparkle.three { top: 30%; left: -5%; color: var(--accent-3); font-size: 1rem; }
+
+    /* Mockup-inspired name treatment while keeping the existing hero layout. */
+    .hero-title {
+      max-width: 760px;
+      font-size: clamp(4.4rem, 13vw, 10.5rem);
+      line-height: 0.82;
+      letter-spacing: -0.065em;
+    }
+
+    .hero-title .hero-name-accent {
+      color: var(--accent);
+    }
+
+    /* Large section headings carry the lavender accent instead of plain white. */
+    .section-title {
+      color: var(--accent);
+    }
+
+    body:not(.light) .section-title {
+      color: #c7b7f1;
+    }
+
+    .featured-project:nth-of-type(2) .project-index { color: var(--accent-2); }
+    .featured-project:nth-of-type(3) .project-index { color: var(--accent-3); }
+    .featured-project:nth-of-type(4) .project-index { color: var(--accent); }
+
+    .project-tags span {
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-tags span:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    .build-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .build-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 26px;
+      width: 38px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .build-card:nth-child(2)::before { background: var(--accent-2); }
+    .build-card:nth-child(3)::before { background: var(--accent-3); }
+    .build-card:nth-child(4)::before { background: var(--accent); }
+
+    .compact-card:nth-child(1) { box-shadow: inset 0 2px 0 color-mix(in srgb, var(--accent-2) 70%, transparent); }
+    .compact-card:nth-child(2) { box-shadow: inset 0 2px 0 color-mix(in srgb, var(--accent-3) 70%, transparent); }
+
+    .experience-number:nth-child(1) {
+      text-shadow: 8px -7px 0 color-mix(in srgb, var(--accent-2) 22%, transparent);
+    }
+
+    body,
+    .section-dark,
+    .compact-card,
+    .build-card,
+    .footer,
+    .nav.is-scrolled,
+    .project-info-trigger,
+    .project-info-panel {
+      transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+    }
+
+    body.light .media-frame .contain {
+      background: #fff;
+    }
+
+    body.light .project-info-panel {
+      background: rgba(255, 252, 255, 0.98);
+      box-shadow: 0 24px 70px rgba(72, 52, 82, 0.15);
+    }
+
+    @media (max-width: 980px) {
+      .hero-decor,
+      .hero::after {
+        opacity: 0.32;
+        right: -70px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .theme-toggle {
+        margin-left: 0;
+      }
+
+      .hero-decor {
+        width: 210px;
+        top: 28%;
+        right: -70px;
+        opacity: 0.22;
+      }
+
+      .hero::after {
+        width: 280px;
+        top: 27%;
+        right: -115px;
+        opacity: 0.20;
+      }
+    }
+    
+    /* Use the supplied floral artwork as the hero accent. */
+    .hero-decor.hero-decor-image {
+      width: min(39vw, 520px);
+      aspect-ratio: auto;
+      right: max(2vw, calc((100vw - var(--max-width)) / 2 - 55px));
+      top: 14%;
+      opacity: 0.92;
+      filter: none;
+    }
+
+    .hero-decor.hero-decor-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      mix-blend-mode: normal;
+    }
+
+    body:not(.light) .hero-decor.hero-decor-image img {
+      opacity: 0.92;
+    }
+
+    @media (max-width: 980px) {
+      .hero-decor.hero-decor-image {
+        width: min(42vw, 390px);
+        right: 2vw;
+        top: 19%;
+        opacity: 0.72;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero-decor.hero-decor-image {
+        display: none;
+      }
+    }
+
+
+    /* Fine alignment for section-label sparkle */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      line-height: 1;
+    }
+
+    .eyebrow::before {
+      margin-right: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transform: translateY(-0.02em);
+    }
+
+    /* Project details: hover on desktop, tap/click on mobile */
+    @media (min-width: 761px) {
+      .project-info .project-info-panel {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(-6px) !important;
+      }
+
+      .project-info:hover .project-info-panel,
+      .project-info:focus-within .project-info-panel {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .project-info .project-info-panel,
+      .project-info:hover .project-info-panel,
+      .project-info:focus-within .project-info-panel {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(-6px) !important;
+      }
+
+      .project-info.is-open .project-info-panel {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+      }
+
+      .project-info.is-open .project-info-trigger {
+        color: var(--accent);
+        border-color: var(--accent);
+        background: rgba(57, 199, 255, 0.08);
+      }
+    }
+
+
+    /* v8 typography + accent refinements */
+    #about .section-title,
+    #build .section-title,
+    #experience .section-title {
+      font-size: clamp(2rem, 4vw, 4.6rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+
+    /* Keep every featured-project index consistently pink. */
+    .featured-project .project-index,
+    .featured-project:nth-of-type(2) .project-index,
+    .featured-project:nth-of-type(3) .project-index,
+    .featured-project:nth-of-type(4) .project-index {
+      color: var(--accent-2);
+    }
+
+    /* Section-label sparkles use the gold accent throughout. */
+    .eyebrow::before {
+      color: var(--accent-3);
+    }
+
+
+    /* v9: restore the About statement as a large headline */
+    #about .section-title {
+      font-size: clamp(2.5rem, 7vw, 5.8rem) !important;
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+    }
+
+</style>
 </head>
 <body>
 <nav class="nav" id="nav">
@@ -1072,17 +1450,21 @@
 <li><a href="#experience">Experience</a></li>
 </ul>
 <div aria-label="Social links" class="nav-socials">
-<a aria-label="GitHub" class="icon-link" href="https://github.com/saifuds" rel="noopener noreferrer" target="_blank">
-<svg aria-hidden="true" viewbox="0 0 24 24">
-<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" fill="currentColor"></path>
-</svg>
-</a>
+
+
+
 <a aria-label="LinkedIn" class="icon-link" href="https://linkedin.com/in/suemayya" rel="noopener noreferrer" target="_blank">
 <svg aria-hidden="true" viewbox="0 0 24 24">
 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.127 0 2.061 2.061 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"></path>
 </svg>
-</a>
-</div>
+</a><a aria-label="Email" class="icon-link" href="mailto:suemayya123@gmail.com">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2 9 6 9-6H3zm18 10V9.4l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.4V17h18z" fill="currentColor"></path>
+</svg>
+</a></div>
+<button aria-label="Switch to light mode" class="theme-toggle" id="theme-toggle" title="Toggle light/dark mode" type="button">
+<span aria-hidden="true" id="theme-icon">☀</span>
+</button>
 </div>
 </nav>
 <header class="hero" id="top">
@@ -1090,8 +1472,8 @@
 <p class="hero-label">Electrical Engineering Student, McMaster University</p>
 <h1 class="hero-title">
         Suemayya<br/>
-        Saifuddin
-      </h1>
+<span class="hero-name-accent">Saifuddin</span>
+</h1>
 <p class="hero-copy">
         Building practical engineering systems across hardware, software, and electronics.
       </p>
@@ -1100,14 +1482,12 @@
           View Work
           <span aria-hidden="true">↓</span>
 </a>
-<a class="btn btn-secondary" href="https://github.com/saifuds" rel="noopener noreferrer" target="_blank">
-          GitHub
-        </a>
-<a class="btn btn-secondary" href="https://linkedin.com/in/suemayya" rel="noopener noreferrer" target="_blank">
-          LinkedIn
-        </a>
 </div>
 </div>
+<div aria-hidden="true" class="hero-decor hero-decor-image">
+<img alt="" src="assets/images/hero-floral-accent.png"/>
+</div>
+
 </header>
 <main>
 <section class="section section-dark" id="work">
@@ -1170,7 +1550,7 @@
 </div>
 <figure class="project-media">
 <div class="media-frame">
-<video aria-label="SumoBot demonstration video" controls="" id="sumobot-video" playsinline="" preload="metadata">
+<video aria-label="SumoBot demonstration video" controls="" id="sumobot-video" playsinline="" muted="" preload="metadata">
 <source src="assets/sumobot-demo.mp4" type="video/mp4"/>
                 Your browser does not support embedded MP4 video.
               </video>
@@ -1178,7 +1558,7 @@
 <figcaption>Autonomous SumoBot demonstration and final competition-day build.</figcaption>
 </figure>
 <div class="project-info"><div aria-label="Show full project details" class="project-info-trigger" tabindex="0">Full project details</div><div class="project-info-panel"><h4>McMaster SumoBot</h4><ul><li>Developed "Shredded Bot," an autonomous combat robot using an Arduino Nano for real-time sensor data and motor control.</li><li>Integrated ultrasonic and infrared sensors for high-speed opponent tracking and boundary-line avoidance.</li><li>Optimized a finite state machine to transition between autonomous search, attack, and defend states.</li><li>Validated system reliability through iterative hardware stress testing and real-time firmware debugging.</li><li>Implemented software-level filtering for edge-detection sensors to reduce false-positive boundary triggers.</li><li>Adapted the mechanical structure after a 3D-printing discrepancy to satisfy competition size regulations.</li></ul></div></div></article>
-<article class="featured-project"><div class="project-copy"><p class="project-index">04 / SOFTWARE DESIGN</p><h3 class="project-title">Snake Game</h3><p class="project-question">An object-oriented C++ implementation of Snake built around modular game-state and movement logic.</p><p class="project-body">Reworked procedural game logic into interacting classes using composition and finite-state control. Implemented dynamic growth, coordinate-based collision detection, constrained food generation, score feedback, and explicit memory management validated with Dr. Memory.</p><div class="project-tags"><span>C++</span><span>OOP</span><span>FSM</span><span>Dynamic Memory</span><span>Dr. Memory</span></div></div><figure class="project-media"><div class="media-frame snake-video-frame"><video aria-label="Snake Game demonstration video" controls="" playsinline="" preload="metadata"><source src="assets/snake-game-demo.mp4" type="video/mp4"/>Your browser does not support embedded MP4 video.</video></div><figcaption>Gameplay demonstration showing movement, scoring, collision handling, and dynamic growth.</figcaption></figure><div class="project-info"><div aria-label="Show full project details" class="project-info-trigger" tabindex="0">Full project details</div><div class="project-info-panel"><h4>Snake Game</h4><ul><li>Developed a Snake game using object-oriented design, replacing procedural logic with modular interacting classes.</li><li>Implemented a finite state machine to handle directional input and enforce valid movement transitions.</li><li>Applied composition by integrating the array list within the Player class to support dynamic growth and state tracking.</li><li>Designed collision detection for food consumption and self-intersection using coordinate-based comparisons.</li><li>Implemented constrained random food generation to prevent overlap with the snake body.</li><li>Added dynamic game-like popups displaying points and length increases when food is collected.</li><li>Used Dr. Memory to verify heap integrity and eliminate memory leaks through proper allocation and destructor design.</li></ul></div></div></article><p class="eyebrow">Additional Technical Work</p>
+<article class="featured-project"><div class="project-copy"><p class="project-index">04 / SOFTWARE DESIGN</p><h3 class="project-title">Snake Game</h3><p class="project-question">An object-oriented C++ implementation of Snake built around modular game-state and movement logic.</p><p class="project-body">Reworked procedural game logic into interacting classes using composition and finite-state control. Implemented dynamic growth, coordinate-based collision detection, constrained food generation, score feedback, and explicit memory management validated with Dr. Memory.</p><div class="project-tags"><span>C++</span><span>OOP</span><span>FSM</span><span>Dynamic Memory</span><span>Dr. Memory</span></div></div><figure class="project-media"><div class="media-frame snake-video-frame"><video aria-label="Snake Game demonstration video" controls="" playsinline="" muted="" preload="metadata"><source src="assets/snake-game-demo.mp4" type="video/mp4"/>Your browser does not support embedded MP4 video.</video></div><figcaption>Gameplay demonstration showing movement, scoring, collision handling, and dynamic growth.</figcaption></figure><div class="project-info"><div aria-label="Show full project details" class="project-info-trigger" tabindex="0">Full project details</div><div class="project-info-panel"><h4>Snake Game</h4><ul><li>Developed a Snake game using object-oriented design, replacing procedural logic with modular interacting classes.</li><li>Implemented a finite state machine to handle directional input and enforce valid movement transitions.</li><li>Applied composition by integrating the array list within the Player class to support dynamic growth and state tracking.</li><li>Designed collision detection for food consumption and self-intersection using coordinate-based comparisons.</li><li>Implemented constrained random food generation to prevent overlap with the snake body.</li><li>Added dynamic game-like popups displaying points and length increases when food is collected.</li><li>Used Dr. Memory to verify heap integrity and eliminate memory leaks through proper allocation and destructor design.</li></ul></div></div></article><p class="eyebrow">Additional Technical Work</p>
 <div class="compact-grid">
 <article class="compact-card">
 <div>
@@ -1215,7 +1595,7 @@
 <div class="container about-grid about-grid-stacked">
 <div class="build-statement-stack">
 <p class="eyebrow">About</p>
-<h2 class="section-title">Nothing works the first time, and that's okay.</h2>
+<h2 class="section-title">Things might not work the first time, and that's okay.</h2>
 </div>
 <div>
 <p class="about-copy">
@@ -1306,19 +1686,25 @@
 <div class="container footer-inner">
 <h1 style="">Connect with me</h1>
 <div class="footer-links">
-<a class="footer-link" href="https://github.com/saifuds" rel="noopener noreferrer" target="_blank">
-<svg aria-hidden="true" viewbox="0 0 24 24">
-<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" fill="currentColor"></path>
-</svg>
-          GitHub
-        </a>
+
+
+
 <a class="footer-link" href="https://linkedin.com/in/suemayya" rel="noopener noreferrer" target="_blank">
 <svg aria-hidden="true" viewbox="0 0 24 24">
 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.127 0 2.061 2.061 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"></path>
 </svg>
           LinkedIn
-        </a>
-</div>
+        </a><a class="footer-link" href="mailto:suemayya123@gmail.com">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2 9 6 9-6H3zm18 10V9.4l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.4V17h18z" fill="currentColor"></path>
+</svg>
+          Email
+        </a><a class="footer-link" href="https://github.com/saifuds" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 24 24">
+<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" fill="currentColor"></path>
+</svg>
+          GitHub
+        </a></div>
 <p class="copyright">
         © 2026 Suemayya Saifuddin
       </p>
@@ -1369,6 +1755,123 @@
         sumobotVideo.play();
       });
     }
+
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+
+    function setTheme(isDark) {
+      document.body.classList.toggle("dark", isDark);
+      document.body.classList.toggle("light", !isDark);
+      themeIcon.textContent = isDark ? "☀" : "☾";
+      themeToggle.setAttribute(
+        "aria-label",
+        isDark ? "Switch to light mode" : "Switch to dark mode"
+      );
+    }
+
+    const savedTheme = localStorage.getItem("theme");
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (savedTheme === "dark" || savedTheme === "light") {
+      setTheme(savedTheme === "dark");
+    } else {
+      setTheme(systemTheme.matches);
+    }
+
+    // Follow system changes only until the visitor manually chooses a theme.
+    systemTheme.addEventListener("change", (event) => {
+      if (!localStorage.getItem("theme")) {
+        setTheme(event.matches);
+      }
+    });
+
+    themeToggle.addEventListener("click", () => {
+      const nextIsDark = !document.body.classList.contains("dark");
+      setTheme(nextIsDark);
+      localStorage.setItem("theme", nextIsDark ? "dark" : "light");
+    });
+
+
+    const projectInfoItems = document.querySelectorAll(".project-info");
+    const mobileProjectDetails = window.matchMedia("(max-width: 760px)");
+
+    projectInfoItems.forEach((item) => {
+      const trigger = item.querySelector(".project-info-trigger");
+      if (!trigger) return;
+
+      trigger.setAttribute("role", "button");
+      trigger.setAttribute("aria-expanded", "false");
+
+      trigger.addEventListener("click", (event) => {
+        if (!mobileProjectDetails.matches) return;
+        event.preventDefault();
+        event.stopPropagation();
+
+        const shouldOpen = !item.classList.contains("is-open");
+        projectInfoItems.forEach((otherItem) => {
+          otherItem.classList.remove("is-open");
+          const otherTrigger = otherItem.querySelector(".project-info-trigger");
+          if (otherTrigger) otherTrigger.setAttribute("aria-expanded", "false");
+        });
+
+        item.classList.toggle("is-open", shouldOpen);
+        trigger.setAttribute("aria-expanded", String(shouldOpen));
+      });
+
+      trigger.addEventListener("keydown", (event) => {
+        if (!mobileProjectDetails.matches) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          trigger.click();
+        }
+      });
+    });
+
+    document.addEventListener("click", () => {
+      if (!mobileProjectDetails.matches) return;
+      projectInfoItems.forEach((item) => {
+        item.classList.remove("is-open");
+        const trigger = item.querySelector(".project-info-trigger");
+        if (trigger) trigger.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    mobileProjectDetails.addEventListener("change", () => {
+      projectInfoItems.forEach((item) => {
+        item.classList.remove("is-open");
+        const trigger = item.querySelector(".project-info-trigger");
+        if (trigger) trigger.setAttribute("aria-expanded", "false");
+      });
+    });
+
+
+
+    // Autoplay project videos silently when they enter the viewport.
+    // Browsers permit autoplay when video is muted and playsinline.
+    const projectVideos = document.querySelectorAll("video");
+
+    projectVideos.forEach((video) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+    });
+
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+          // Do not restart the SumoBot after its custom end-state has appeared.
+          if (video.id === "sumobot-video" && video.hidden) return;
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: [0, 0.45, 1] });
+
+    projectVideos.forEach((video) => videoObserver.observe(video));
+
     </script>
 </body>
 </html>
