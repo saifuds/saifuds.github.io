@@ -11,7 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <style>
     :root {
-      /* Dark mode remains the default, preserving the sleek navy base. */
       --bg: #07101c;
       --bg-soft: #0c1726;
       --panel: #111e31;
@@ -867,7 +866,6 @@
         }
         
 
-    /* Stack the 'Nothing works the first time...' heading above its accompanying text. */
     .build-statement-stack {
       display: flex !important;
       flex-direction: column !important;
@@ -881,7 +879,6 @@
     }
     
 
-    /* Stack the About heading above the paragraph. */
     #about .about-grid.about-grid-stacked {
       display: flex !important;
       flex-direction: column !important;
@@ -901,7 +898,6 @@
     }
     
 
-    /* Refine the stacked About layout so the paragraph reads as one continuous section. */
     #about .about-grid.about-grid-stacked {
       gap: 18px !important;
     }
@@ -1047,7 +1043,6 @@
     }
     
 
-    /* Pure hover interaction for project details: no click/open state required. */
     .project-info .project-info-panel {
       opacity: 0 !important;
       visibility: hidden !important;
@@ -1070,7 +1065,6 @@
       background: rgba(57, 199, 255, 0.08);
     }
 
-    /* On touch/mobile, tapping focus still makes the same information accessible. */
     @media (max-width: 760px) {
       .project-info {
         position: relative;
@@ -1193,7 +1187,6 @@
     .hero-sparkle.two { bottom: 9%; left: 3%; color: var(--accent-2); font-size: 1.25rem; }
     .hero-sparkle.three { top: 30%; left: -5%; color: var(--accent-3); font-size: 1rem; }
 
-    /* Mockup-inspired name treatment while keeping the existing hero layout. */
     .hero-title {
       max-width: 760px;
       font-size: clamp(4.4rem, 13vw, 10.5rem);
@@ -1205,7 +1198,6 @@
       color: var(--accent);
     }
 
-    /* Large section headings carry the lavender accent instead of plain white. */
     .section-title {
       color: var(--accent);
     }
@@ -1304,7 +1296,6 @@
       }
     }
     
-    /* Use the supplied floral artwork as the hero accent. */
     .hero-decor.hero-decor-image {
       width: min(39vw, 520px);
       aspect-ratio: auto;
@@ -1341,7 +1332,6 @@
     }
 
 
-    /* Fine alignment for section-label sparkle */
     .eyebrow {
       display: flex;
       align-items: center;
@@ -1401,7 +1391,6 @@
     }
 
 
-    /* v8 typography + accent refinements */
     #about .section-title,
     #build .section-title,
     #experience .section-title {
@@ -1410,7 +1399,6 @@
       letter-spacing: -0.045em;
     }
 
-    /* Keep every featured-project index consistently pink. */
     .featured-project .project-index,
     .featured-project:nth-of-type(2) .project-index,
     .featured-project:nth-of-type(3) .project-index,
@@ -1418,17 +1406,46 @@
       color: var(--accent-2);
     }
 
-    /* Section-label sparkles use the gold accent throughout. */
     .eyebrow::before {
       color: var(--accent-3);
     }
 
 
-    /* v9: restore the About statement as a large headline */
     #about .section-title {
       font-size: clamp(2.5rem, 7vw, 5.8rem) !important;
       line-height: 0.95;
       letter-spacing: -0.055em;
+    }
+
+
+    ::selection {
+      background: rgba(243, 138, 198, 0.32);
+      color: var(--text);
+    }
+
+    ::-moz-selection {
+      background: rgba(243, 138, 198, 0.32);
+      color: var(--text);
+    }
+
+
+    @media (max-width: 760px) {
+      #projects {
+        padding-bottom: 58px;
+      }
+
+      #projects + section,
+      .projects-section + section {
+        padding-top: 58px;
+      }
+
+      .project {
+        margin-bottom: 42px;
+      }
+
+      .project:last-child {
+        margin-bottom: 0;
+      }
     }
 
 </style>
