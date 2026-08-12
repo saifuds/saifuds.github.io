@@ -14,7 +14,8 @@
   const bestDisplay = document.getElementById("leaderboard-best");
   const deletePlayerButton = document.getElementById("delete-player");
   const leaderboardList = document.getElementById("leaderboard-list");
-
+  const forgetPlayerButton = document.getElementById("forget-player");
+  
   const configured =
     window.supabase &&
     window.SNAKE_SUPABASE_URL &&
@@ -356,4 +357,26 @@ deletePlayerButton?.addEventListener("click", async () => {
     leaderboardList.innerHTML =
       '<li class="leaderboard-empty">Connect Supabase to load scores.</li>';
   }
+
+
+  forgetPlayerButton?.addEventListener("click", async () => {
+  if (!client) return;
+
+  const confirmed = window.confirm(
+    "Forget this player on this browser? You will not be able to recover this identity."
+  );
+
+  if (!confirmed) return;
+
+  try {
+    await client.auth.signOut();
+
+    await refreshPlayerUI();
+
+  } catch (error) {
+    console.error("Could not forget player:", error);
+  }
+});
 })();
+
+

@@ -463,6 +463,34 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+
+const desktopWarning =
+  document.getElementById("desktop-only-warning");
+
+const snakeDemo =
+  document.querySelector(".snake-demo");
+
+function checkDesktopExperience() {
+  const isSmallScreen =
+    window.matchMedia("(max-width: 800px)").matches;
+
+  const isTouchOnly =
+    window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
+  const desktopOnly = isSmallScreen || isTouchOnly;
+
+  if (desktopWarning) {
+    desktopWarning.hidden = !desktopOnly;
+  }
+
+  if (snakeDemo) {
+    snakeDemo.hidden = desktopOnly;
+  }
+}
+
+checkDesktopExperience();
+
+window.addEventListener("resize", checkDesktopExperience);
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = document.getElementById("theme-icon");
 

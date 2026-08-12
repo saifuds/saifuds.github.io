@@ -793,3 +793,60 @@ body {
 .leaderboard-account {
   border-color: var(--line);
 }
+
+.desktop-only-warning {
+  min-height: calc(100vh - 72px);
+  padding: 110px 24px 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktop-only-warning[hidden] {
+  display: none;
+}
+
+.desktop-warning-card {
+  width: min(440px, 100%);
+  padding: 32px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: var(--panel);
+  color: var(--text);
+
+  text-align: center;
+}
+
+.desktop-warning-label {
+  margin: 0 0 12px;
+
+  color: var(--accent);
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+}
+
+.desktop-warning-card h1 {
+  margin: 0 0 12px;
+  font-size: 2rem;
+}
+
+.desktop-warning-card p {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.desktop-warning-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+}
+
+.desktop-warning-card a:hover {
+  color: var(--accent-2);
+}
