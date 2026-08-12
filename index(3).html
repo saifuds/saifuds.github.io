@@ -418,6 +418,7 @@
     }
 
     .media-frame {
+      position: relative;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -801,9 +802,11 @@
     }
 
     .sumobot-end-state {
-      position: relative;
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
+      z-index: 10;
     }
 
     .sumobot-end-state[hidden] {
@@ -1911,13 +1914,11 @@
 
     if (sumobotVideo && sumobotEndState && sumobotReplay) {
       sumobotVideo.addEventListener("ended", () => {
-        sumobotVideo.hidden = true;
         sumobotEndState.hidden = false;
       });
 
       sumobotReplay.addEventListener("click", () => {
         sumobotEndState.hidden = true;
-        sumobotVideo.hidden = false;
         sumobotVideo.currentTime = 0;
         sumobotVideo.play();
       });
@@ -2029,7 +2030,7 @@
 
         if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
           // Do not restart the SumoBot after its custom end-state has appeared.
-          if (video.id === "sumobot-video" && video.hidden) return;
+          if (video.id === "sumobot-video" && sumobotEndState && !sumobotEndState.hidden) return;
           video.play().catch(() => {});
         } else {
           video.pause();

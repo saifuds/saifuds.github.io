@@ -49,15 +49,21 @@ function updateNavLogo() {
 window.addEventListener("scroll", updateNavLogo, { passive: true });
 updateNavLogo();
 
-
 const sumobotVideo = document.getElementById("sumobot-video");
+const sumobotEndState = document.getElementById("sumobot-end-state");
+const sumobotReplay = document.getElementById("sumobot-replay");
 
-sumobotVideo.addEventListener("ended", () => {
-    // Go back to the beginning...
-    sumobotVideo.load();
+if (sumobotVideo && sumobotEndState && sumobotReplay) {
 
-    // ...but show this image instead of the first frame.
-    sumobotVideo.poster =
-        "assets/images/sumobot-shredded-bot-testing.jpg";
-});
+  sumobotVideo.addEventListener("ended", function () {
+    sumobotEndState.hidden = false;
+  });
+
+  sumobotReplay.addEventListener("click", function () {
+    sumobotEndState.hidden = true;
+    sumobotVideo.currentTime = 0;
+    sumobotVideo.play();
+  });
+}
+
 })();

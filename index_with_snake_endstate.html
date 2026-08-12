@@ -418,6 +418,7 @@
     }
 
     .media-frame {
+      position: relative;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -801,9 +802,11 @@
     }
 
     .sumobot-end-state {
-      position: relative;
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
+      z-index: 10;
     }
 
     .sumobot-end-state[hidden] {
@@ -1556,6 +1559,47 @@
   }
 }
 
+
+    .snake-end-state {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+
+    .snake-end-state[hidden] {
+      display: none;
+    }
+
+    .snake-end-state img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .snake-replay {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      z-index: 11;
+      padding: 11px 18px;
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 10px;
+      background: rgba(5, 12, 21, .82);
+      color: #eef6ff;
+      font: inherit;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    .snake-replay:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
 </style>
 </head>
 <body>
@@ -1695,7 +1739,7 @@
 <source src="assets/sumobot-demo.mp4" type="video/mp4"/>
                 Your browser does not support embedded MP4 video.
               </video>
-<div class="sumobot-end-state" hidden="" id="sumobot-end-state"><img alt="Finished Shredded Bot on competition day" src="assets/images/sumobot-shredded-bot-competition-day.jpg"/><button class="sumobot-replay" id="sumobot-replay" type="button">Replay video</button></div></div>
+<div class="sumobot-end-state" hidden="" id="sumobot-end-state"><img alt="Finished Shredded Bot on competition day" src="assets/images/sumobot-thumbnail.png"/><button class="sumobot-replay" id="sumobot-replay" type="button">Replay video</button></div></div>
 <figcaption>Autonomous SumoBot demonstration and final competition-day build design.</figcaption>
 </figure>
 <div class="project-info"><div aria-label="Show full project details" class="project-info-trigger" tabindex="0">Full project details</div><div class="project-info-panel"><h4>McMaster SumoBot</h4>
@@ -1707,7 +1751,7 @@
   <li>Firmware and hardware were tested iteratively to improve sensor reliability and autonomous behaviour.</li>
 </ul>
 </div></div></article>
-<article class="featured-project"><div class="project-copy"><p class="project-index">04 / SOFTWARE DESIGN</p><h3 class="project-title">Snake Game</h3><p class="project-question">A terminal-based Snake game developed around modular C++ classes, finite-state movement, and dynamic memory management.</p><p class="project-body">The game was developed using an object-oriented architecture that separates player movement, food generation, position storage, and overall game state into individual components. I implemented finite-state movement, coordinate-based collision detection, dynamic snake growth, and constrained food generation. The project also required manual memory management for dynamically allocated game objects, with Dr. Memory used to identify memory issues and verify proper cleanup.</p><div class="project-tags"><span>C++</span><span>OOP</span><span>FSM</span><span>Dynamic Memory</span><span>Dr. Memory</span></div></div><figure class="project-media"><div class="media-frame snake-video-frame"><video aria-label="Snake Game demonstration video" controls="" playsinline="" muted="" preload="metadata"><source src="assets/snake-game-demo.mp4" type="video/mp4"/>Your browser does not support embedded MP4 video.</video></div><figcaption>Gameplay demonstration showing movement, scoring, collision handling, and dynamic growth.</figcaption></figure><div class="project-info"><div aria-label="Show full project details" class="project-info-trigger" tabindex="0">Full project details</div><div class="project-info-panel"><h4>Snake Game</h4>
+<article class="featured-project"><div class="project-copy"><p class="project-index">04 / SOFTWARE DESIGN</p><h3 class="project-title">Snake Game</h3><p class="project-question">A terminal-based Snake game developed around modular C++ classes, finite-state movement, and dynamic memory management.</p><p class="project-body">The game was developed using an object-oriented architecture that separates player movement, food generation, position storage, and overall game state into individual components. I implemented finite-state movement, coordinate-based collision detection, dynamic snake growth, and constrained food generation. The project also required manual memory management for dynamically allocated game objects, with Dr. Memory used to identify memory issues and verify proper cleanup.</p><div class="project-tags"><span>C++</span><span>OOP</span><span>FSM</span><span>Dynamic Memory</span><span>Dr. Memory</span></div></div><figure class="project-media"><div class="media-frame snake-video-frame"><video aria-label="Snake Game demonstration video" controls="" id="snake-video" playsinline="" muted="" preload="metadata"><source src="assets/snake-game-demo.mp4" type="video/mp4"/>Your browser does not support embedded MP4 video.</video><div class="snake-end-state" hidden id="snake-end-state"><button class="snake-replay" id="snake-replay" type="button">Replay video</button></div></div><figcaption>Gameplay demonstration showing movement, scoring, collision handling, and dynamic growth.</figcaption></figure><div class="project-info"><div aria-label="Show full project details" class="project-info-trigger" tabindex="0">Full project details</div><div class="project-info-panel"><h4>Snake Game</h4>
 <ul class="technical-detail-list">
   <li>C++ classes separate player behaviour, food generation, position storage, and overall game state, with composition connecting the components.</li>
   <li>Finite-state movement logic handles directional transitions and prevents invalid reversals during gameplay.</li>
@@ -1752,7 +1796,7 @@
 <div class="container about-grid about-grid-stacked">
 <div class="build-statement-stack">
 <p class="eyebrow">About</p>
-<h2 class="section-title">Things might not work the first time, and that's okay.</h2>
+<h2 class="section-title">Things might not work the first time around, and that's okay.</h2>
 </div>
 <div>
 <p class="about-copy">
@@ -1911,15 +1955,30 @@
 
     if (sumobotVideo && sumobotEndState && sumobotReplay) {
       sumobotVideo.addEventListener("ended", () => {
-        sumobotVideo.hidden = true;
         sumobotEndState.hidden = false;
       });
 
       sumobotReplay.addEventListener("click", () => {
         sumobotEndState.hidden = true;
-        sumobotVideo.hidden = false;
         sumobotVideo.currentTime = 0;
         sumobotVideo.play();
+      });
+    }
+
+
+    const snakeVideo = document.getElementById("snake-video");
+    const snakeEndState = document.getElementById("snake-end-state");
+    const snakeReplay = document.getElementById("snake-replay");
+
+    if (snakeVideo && snakeEndState && snakeReplay) {
+      snakeVideo.addEventListener("ended", () => {
+        snakeEndState.hidden = false;
+      });
+
+      snakeReplay.addEventListener("click", () => {
+        snakeEndState.hidden = true;
+        snakeVideo.currentTime = 0;
+        snakeVideo.play();
       });
     }
 
@@ -2029,7 +2088,7 @@
 
         if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
           // Do not restart the SumoBot after its custom end-state has appeared.
-          if (video.id === "sumobot-video" && video.hidden) return;
+          if (video.id === "sumobot-video" && sumobotEndState && !sumobotEndState.hidden) return;
           video.play().catch(() => {});
         } else {
           video.pause();
