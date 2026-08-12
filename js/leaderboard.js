@@ -12,9 +12,9 @@
   const signedIn = document.getElementById("leaderboard-signed-in");
   const usernameDisplay = document.getElementById("leaderboard-username");
   const bestDisplay = document.getElementById("leaderboard-best");
-  const deletePlayerButton = document.getElementById("delete-player");
+//  const deletePlayerButton = document.getElementById("delete-player");
   const leaderboardList = document.getElementById("leaderboard-list");
-  const forgetPlayerButton = document.getElementById("forget-player");
+//  const forgetPlayerButton = document.getElementById("forget-player");
   
   const configured =
     window.supabase &&
@@ -293,7 +293,7 @@
     submitBestScore(Number(event.detail?.score));
   });
 
-deletePlayerButton?.addEventListener("click", async () => {
+/*deletePlayerButton?.addEventListener("click", async () => {
   if (!client) return;
 
   const session = await getCurrentSession();
@@ -341,7 +341,7 @@ deletePlayerButton?.addEventListener("click", async () => {
       error
     );
   }
-});
+});*/
 
 
   if (client) {
