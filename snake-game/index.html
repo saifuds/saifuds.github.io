@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Snake Game | Suemayya Saifuddin</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/snake-game.css">
+</head>
+
+<body>
+  <nav class="nav is-scrolled" id="snake-nav">
+    <div class="nav-inner">
+      <a class="nav-logo snake-nav-logo" href="/" aria-label="Back to portfolio">
+        <span class="snake-nav-mark">Suemayya Saifuddin</span>
+      </a>
+
+      <a class="snake-back-link" href="/">
+        ← Portfolio
+      </a>
+
+      <button
+        aria-label="Switch to light mode"
+        class="theme-toggle"
+        id="theme-toggle"
+        title="Toggle light/dark mode"
+        type="button"
+      >
+        <span aria-hidden="true" id="theme-icon">☀︎</span>
+      </button>
+    </div>
+  </nav>
+
+
+  <main class="snake-demo">
+
+    <div class="snake-layout">
+
+      <!-- GAME -->
+      <section
+        class="snake-terminal"
+        aria-label="Playable terminal Snake game"
+      >
+
+        <!-- TERMINAL HEADER -->
+        <div class="terminal-bar">
+
+          <div
+            class="terminal-dots"
+            aria-label="Window controls"
+          >
+
+            <button
+              class="terminal-dot terminal-close"
+              id="terminal-close"
+              type="button"
+              aria-label="Return to portfolio"
+              title="Return to portfolio"
+            ></button>
+
+            <button
+              class="terminal-dot terminal-minimize"
+              id="terminal-minimize"
+              type="button"
+              aria-label="Compact game window"
+              title="Compact"
+            ></button>
+
+            <button
+              class="terminal-dot terminal-maximize"
+              id="terminal-maximize"
+              type="button"
+              aria-label="Expand game window"
+              title="Expand"
+            ></button>
+
+          </div>
+
+          <span>Project.exe</span>
+
+          <button
+            id="snake-restart"
+            type="button"
+          >
+            Restart
+          </button>
+
+        </div>
+
+
+        <!-- GAME SCREEN -->
+        <div
+          class="terminal-body"
+          id="snake-game"
+          tabindex="0"
+        >
+          <pre
+            id="snake-screen"
+            aria-live="polite"
+          ></pre>
+        </div>
+
+
+        <!-- CLOSE GAME DIALOG -->
+        <div
+          class="close-dialog-backdrop"
+          id="close-dialog"
+          hidden
+        >
+
+          <div
+            class="close-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="close-dialog-title"
+          >
+
+            <p class="close-dialog-label">
+              PROJECT.EXE
+            </p>
+
+            <h2 id="close-dialog-title">
+              Close game?
+            </h2>
+
+            <p>
+              Your current run will be lost.
+            </p>
+
+            <div class="close-dialog-actions">
+
+              <button
+                id="cancel-close"
+                type="button"
+              >
+                Cancel
+              </button>
+
+              <button
+                id="confirm-close"
+                type="button"
+              >
+                Leave Game
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- MOBILE CONTROLS -->
+        <div
+          class="snake-mobile-controls"
+          aria-label="Snake controls"
+        >
+
+          <button
+            type="button"
+            data-dir="UP"
+          >
+            ↑
+          </button>
+
+          <div>
+
+            <button
+              type="button"
+              data-dir="LEFT"
+            >
+              ←
+            </button>
+
+            <button
+              type="button"
+              data-dir="DOWN"
+            >
+              ↓
+            </button>
+
+            <button
+              type="button"
+              data-dir="RIGHT"
+            >
+              →
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- LEADERBOARD -->
+      <aside class="leaderboard-panel">
+
+        <div class="leaderboard-header">
+
+          <p>
+            TOP SCORES
+          </p>
+
+          <h2>
+            Leaderboard
+          </h2>
+
+        </div>
+
+
+        <ol
+          class="leaderboard-list"
+          id="leaderboard-list"
+        >
+
+          <li class="leaderboard-empty">
+            Loading...
+          </li>
+
+        </ol>
+
+
+        <!-- ACCOUNT STATUS -->
+        <div class="leaderboard-account">
+
+          <!-- NOT SIGNED IN -->
+          <div id="leaderboard-signed-out">
+
+            <p>
+              Want your score up here?
+            </p>
+
+            <button
+              id="open-auth"
+              type="button"
+            >
+              Join leaderboard ↗
+            </button>
+
+          </div>
+
+
+          <!-- SIGNED IN -->
+          <div
+            id="leaderboard-signed-in"
+            hidden
+          >
+
+            <p>
+              Playing as
+              <strong id="leaderboard-username">
+                @username
+              </strong>
+            </p>
+
+            <p>
+              Personal best
+              <strong id="leaderboard-best">
+                0
+              </strong>
+            </p>
+
+            <button
+              id="logout-button"
+              type="button"
+            >
+              Forget player
+            </button>
+
+          </div>
+
+        </div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+
+  <!-- USERNAME-ONLY LEADERBOARD MODAL -->
+  <div
+    class="auth-dialog-backdrop"
+    id="auth-dialog"
+    hidden
+  >
+    <div
+      class="auth-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="auth-dialog-title"
+    >
+      <p class="auth-dialog-label">
+        JOIN THE LEADERBOARD
+      </p>
+
+      <h2 id="auth-dialog-title">
+        Choose a username
+      </h2>
+
+      <form
+        class="auth-form"
+        id="join-form"
+      >
+        <label>
+          Username
+
+          <input
+            id="join-username"
+            type="text"
+            minlength="3"
+            maxlength="18"
+            pattern="[A-Za-z0-9_]+"
+            autocomplete="username"
+            placeholder="circuitgirl"
+            required
+          >
+
+          <span class="field-hint">
+            3–18 characters. Letters, numbers, and underscores.
+          </span>
+        </label>
+
+        <button
+          class="primary-button"
+          type="submit"
+        >
+          Join
+        </button>
+      </form>
+
+      <p
+        class="auth-message"
+        id="auth-message"
+        role="status"
+      ></p>
+
+      <p class="identity-note">
+        No email or password. Your player identity is saved only on this browser.
+      </p>
+
+      <div class="auth-dialog-actions">
+        <button
+          id="cancel-auth"
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="../js/supabase-config.js"></script>
+  <script src="../js/leaderboard.js"></script>
+
+  <!-- GAME -->
+  <script src="../js/snake-game.js"></script>
+
+</body>
+</html>

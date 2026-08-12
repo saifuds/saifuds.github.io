@@ -1067,7 +1067,6 @@
     }
 
 
-    /* ---------- playful accent layer ---------- */
     ::selection {
       background: var(--accent-2);
       color: #17121f;
@@ -1549,6 +1548,7 @@
 
     .snake-end-state {
       position: absolute;
+      z-index: 10;
       inset: 0;
       width: 100%;
       height: 100%;
@@ -1586,3 +1586,41 @@
       border-color: var(--accent);
       color: var(--accent);
     }
+
+    .snake-video-frame {
+  position: relative;
+}
+
+.snake-play-overlay {
+  position: absolute;
+  top: 50%;
+  right: 6rem;
+
+  transform: translateY(-50%);
+
+  padding: 1rem 1.8rem;
+  border-radius: 999px;
+
+  z-index: 20;
+
+
+  background: rgba(18, 18, 22, 0.82);
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+
+  backdrop-filter: blur(8px);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.snake-play-overlay:hover {
+  transform: translateY(-50%) scale(1.04);
+  background: rgba(18, 18, 22, 0.95);
+}
+
