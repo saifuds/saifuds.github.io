@@ -753,6 +753,7 @@ body {
   transform: none;
   font-weight: 700;
   letter-spacing: -0.025em;
+  color: var(--text);
 }
 
 .snake-back-link {
