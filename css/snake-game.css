@@ -521,7 +521,7 @@ body {
 
 #open-auth:hover,
 #logout-button:hover {
-  color: var(--snake-page-text);
+  color: var(--text);
 }
 
 /* username */
