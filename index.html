@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Suemayya Saifuddin — Electrical Engineering student building practical systems across hardware, software, and electronics." name="description"/>
-<title>Suemayya Saifuddin | Electrical Engineering</title>
+<meta content="Suemayya Saifuddin - EE student" name="description"/>
+<title>Suemayya Saifuddin |EE Student</title>
 <meta
   name="description"
   content="Suemayya Saifuddin is an Electrical Engineering student at McMaster University who enjoys building embedded systems, electronics, software, and hardware projects."
@@ -54,13 +54,13 @@
 </nav>
 <header class="hero" id="top">
 <div class="container hero-content">
-<p class="hero-label">Electrical Engineering Student, McMaster University</p>
+<p class="hero-label">Electrical Engineering Student at McMaster University</p>
 <h1 class="hero-title">
         Suemayya<br/>
 <span class="hero-name-accent">Saifuddin</span>
 </h1>
 <p class="hero-copy">
-        Building practical engineering systems across hardware, software, and electronics.
+        Embedded Systems · Circuit Design & Analysis · Digital Design
       </p>
 <div class="hero-actions">
 <a class="btn btn-primary" href="#work">
@@ -92,7 +92,7 @@
               Embedded E-Ink Dashboard
             </h3>
 <p class="project-question">A low-power personal dashboard that displays my daily calendar events, weather, and prayer times onto an E-Ink display.</p>
-<p class="project-body">I developed the dashboard using an ESP32 and 3.97-inch Waveshare e-paper display, integrating Google Calendar, weather, and prayer APIs into a custom designed interface. The system retrieves and processes data during each refresh before entering deep sleep. As the interface grew, I optimized memory usage and used 1-bit graphics with dynamic text wrapping and truncation to work within the ESP32's memory constraints.</p>
+<p class="project-body">I developed the dashboard using an ESP32 and 3.97-inch Waveshare e-paper display, which integrates Google Calendar, weather, and prayer APIs into my custom designed interface. The system retrieves and processes data during every refresh before entering deep sleep. As the interface grew, I optimized memory usage and used 1-bit graphics with dynamic text wrapping and truncation to work within the ESP32's memory constraints.</p>
 <div class="project-tags"><span>ESP32</span><span>C++</span><span>SPI</span><span>REST APIs</span><span>OAuth 2.0</span><span>E-Ink</span></div>
 </div>
 <figure class="project-media">
@@ -118,7 +118,7 @@
 <p class="project-index">02 / SENSING + VISUALIZATION</p>
 <h3 class="project-title">3D Mapping System</h3>
 <p class="project-question">An embedded scanning system that collects spatial measurements and reconstructs the surrounding environment as a 3D point cloud.</p>
-<p class="project-body">I developed the system using an MSP432 microcontroller, Time-of-Flight sensor, and stepper motor. The microcontroller coordinates 360° scans through fixed angular increments and transmits the measurements over UART. The scan data is processed in Python, converting it into 3D Cartesian coordinates, then uses Open3D to visualize the reconstructed environment. Across multiple scanning positions, the completed system collected approximately 900 measurements of a hallway.</p>
+<p class="project-body">I developed the system using an MSP432 microcontroller, Time of Flight sensor, and stepper motor. The microcontroller coordinates 360° scans through fixed angular increments and transmits the measurements over UART. The scan data is processed in Python, which converts it into 3D Cartesian coordinates, then uses Open3D to visualize the reconstructed environment. After scanning across multiple scanning positions, the completed system collected approximately 900 measurements of a hallway.</p>
 <div class="project-tags"><span>MSP432</span><span>C</span><span>I²C</span><span>UART</span><span>ToF</span><span>Python</span><span>Open3D</span></div>
 </div>
 <figure class="project-media">
@@ -145,8 +145,8 @@
 <h3 class="project-title">
               McMaster SumoBot
             </h3>
-<p class="project-question">An autonomous SumoBot designed to detect an opponent, respond to its surroundings, and remain inside the competition ring.</p>
-<p class="project-body">As part of the McMaster SumoBot Competition, I worked in a team on <i>Shredded Bot</i>, an Arduino Nano-based robot which uses ultrasonic sensing for opponent detection and infrared sensors for boundary detection. Its autonomous behaviour was built off a finite state machine which controls the search, attack, and defensive responses. Testing exposed unreliable boundary detections, which we addressed through software filtering and iterative hardware testing. The mechanical design was also adapted after a 3D-printing discrepancy caused the original assembly to exceed competition dimensions.</p>
+<p class="project-question">An autonomous SumoBot designed to detect and fight an opponent, respond to its surroundings, and remain inside the competition ring.</p>
+<p class="project-body">As part of the McMaster SumoBot Competition, I worked in a team to build Shredded Bot, an Arduino Nano based robot that uses ultrasonic sensors to detect its opponents, and infrared sensors for boundary detection. Its autonomous behaviour was built using a finite state machine, which controls the search, attack, and defense responses. Our testing exposed unreliable boundary detections, which we addressed through iterative hardware testing. The mechanical design was also adapted after a 3D-printing discrepancy caused the original assembly to exceed competition dimensions, which led to its name, "Shredded Bot".</p>
 <div class="project-tags"><span>Arduino Nano</span><span>C++</span><span>FSM</span><span>Ultrasonic</span><span>IR Sensors</span><span>Motor Control</span></div>
 </div>
 <figure class="project-media">
@@ -167,7 +167,7 @@
   <li>Firmware and hardware were tested iteratively to improve sensor reliability and autonomous behaviour.</li>
 </ul>
 </div></div></article>
-<article class="featured-project" id="snake-project"><div class="project-copy"><p class="project-index">04 / SOFTWARE DESIGN</p><h3 class="project-title">Snake Game</h3>  <a class="snake-project-link" href="/snake-game/">Play Game ↗</a><p class="project-question">A terminal-based Snake game developed around modular C++ classes, finite-state movement, and dynamic memory management.</p><p class="project-body">The game was developed using an object-oriented architecture that separates player movement, food generation, position storage, and overall game state into individual components. I implemented finite-state movement, coordinate-based collision detection, dynamic snake growth, and constrained food generation. The project also required manual memory management for dynamically allocated game objects, with Dr. Memory used to identify memory issues and verify proper cleanup.</p><div class="project-tags"><span>C++</span><span>OOP</span><span>FSM</span><span>Dynamic Memory</span><span>Dr. Memory</span></div></div><figure class="project-media"><div class="media-frame snake-video-frame"><video aria-label="Snake Game demonstration video" controls="" id="snake-video" playsinline="" muted="" preload="metadata"><source src="assets/snake-game-demo.mp4" type="video/mp4"/>Your browser does not support embedded MP4 video.</video><a href="/snake-game/" class="snake-play-overlay">Play Game</a><div class="snake-end-state" hidden id="snake-end-state"><button class="snake-replay" id="snake-replay" type="button">Replay video</button></div></div><figcaption>Gameplay demonstration showing movement, scoring, collision handling, and dynamic growth.</figcaption></figure><div class="project-info"><div aria-label="Show full project details" class="project-info-trigger" tabindex="0">Full project details</div><div class="project-info-panel"><h4>Snake Game</h4>
+<article class="featured-project" id="snake-project"><div class="project-copy"><p class="project-index">04 / SOFTWARE DESIGN</p><h3 class="project-title">Snake Game</h3>  <a class="snake-project-link" href="/snake-game/">Play Game ↗</a><p class="project-question">A terminal-based Snake game developed using C++ classes, finite state machine, and dynamic memory management.</p><p class="project-body">The game was developed using object oriented programming that separates player movement, food generation, position storage, and overall game state into individual components. I implemented finite-state movement, coordinate-based collision detection, dynamic snake growth, and food generation. The project also required manual memory management for dynamically allocated game objects, with Dr. Memory used to ensure proper heap allocation and cleanup.</p><div class="project-tags"><span>C++</span><span>OOP</span><span>FSM</span><span>Dynamic Memory</span><span>Dr. Memory</span></div></div><figure class="project-media"><div class="media-frame snake-video-frame"><video aria-label="Snake Game demonstration video" controls="" id="snake-video" playsinline="" muted="" preload="metadata"><source src="assets/snake-game-demo.mp4" type="video/mp4"/>Your browser does not support embedded MP4 video.</video><a href="/snake-game/" class="snake-play-overlay">Play Game</a><div class="snake-end-state" hidden id="snake-end-state"><button class="snake-replay" id="snake-replay" type="button">Replay video</button></div></div><figcaption>Gameplay demonstration showing movement, scoring, collision handling, and dynamic growth.</figcaption></figure><div class="project-info"><div aria-label="Show full project details" class="project-info-trigger" tabindex="0">Full project details</div><div class="project-info-panel"><h4>Snake Game</h4>
 <ul class="technical-detail-list">
   <li>C++ classes separate player behaviour, food generation, position storage, and overall game state, with composition connecting the components.</li>
   <li>Finite-state movement logic handles directional transitions and prevents invalid reversals during gameplay.</li>
@@ -216,11 +216,11 @@
 </div>
 <div>
 <p class="about-copy">
-            I am an Electrical Engineering student at McMaster University.
-            I enjoy projects that combine more than one discipline, especially
-            when firmware, electronics, sensing, software, and physical behaviour all 
-            work together. I am most interested in when a design
-            stops being theoretical and becomes something tangible.
+            I am an Electrical Engineering student at McMaster University. 
+            I love to work on projects that combine disciplines, like when firmware, electronics, 
+            sensing, software, and physical behaviour all work together. I am most interested in 
+            when a design stops being something theoretical and becomes tangible, even if it takes 
+            some attempts to get there.
           </p>
 <div class="about-meta">
 <span>Electrical Engineering</span>
